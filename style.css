@@ -1,0 +1,22 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: rgba(158, 204, 170, 0.594);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/*Style for the main content*/
+h1 {
+    columns: #333;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+/* Additional styles for better presentation*/
+html {
+    scroll-behavior: smooth;
+}
