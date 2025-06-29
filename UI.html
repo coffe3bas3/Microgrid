@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel = "stylesheet" href = https://icons8.com/icons/set/solar-panel>
+        <meta charset = "UTF-8" />
+        <meta name = "viewpoint" content = "width=device-width, initial-scale=1.0"/>
+        <script> src = "https://cdn.jsdelivr.net/npm/chart.js"</script>
+        <title> Weill Institute Microgrid</title>
+        <style> 
+            *{ 
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                font-family: Arial, sams-serif;
+                background-color: rgb(207, 219, 192);
+                color: #7a8f6f
+            }
+            header {
+                background-color: rgb(146, 163, 141);
+                color: white;
+                padding: 1rem 2rem;
+                text-align: center;
+            }
+            .dashboard {
+                display: flex;
+                height: calc(100vh - 60px);
+            }
+
+            .sidebar{
+                width: 300px;
+                background: rgb(207, 219, 192);
+                padding: 1rem;
+                box-sizing: border-box;
+            }
+
+            .main-panel{
+                flex-grow: 1;
+                padding: 1rem 2rem;
+                min-width: 0;
+                box-sizing: border-box;
+            }
+            .card {
+                background-color: rgb(226, 241, 213);
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .status-diagram{
+                height: 200px;
+                background: #e3e8ec;
+                border: 1px dashed #aaa;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                border-radius: 8px;
+                color: #666;
+            }
+
+            footer{
+                background-color: #bdc3c7;
+                text-align: center;
+                padding: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <h1>Weill Institute Microgrid</h1>
+        </header>
+        <div class = "dashboard" >
+            <div class = "main-panel">
+                <div class = "card">
+                    <h2>Solar PV Generation</h2>
+                    <canvas id = "Power used" width = "400" height = "200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class = "sidebar">
+                <div class = "card">
+                    <h2><i class = "https://icons8.com/icon/15359/partly-cloudy-day"></i> Weather </h2>
+                    <p style = "color: black">Temperature: --- </p>
+                    <p style = "color: black">Wind Direction: ---</p>
+                    <p style = "color: black">Irradance: ---</p>
+
+                </div>
+                <div class = "card">;
+                    <h2>Generation</h2>
+                    <p style = "color: black"> Solar Generation: ----</p>
+                    <p style = "color: black"> Energy Generation to Date: ----</p>
+                </div>
+
+                <div class = "card">
+                    <h2>Energy Stored</h2>
+                    <p style = "color: black">Current Storage: --- </p>
+                    <p style = "color: black">Storage Over Time: --- </p>
+                </div>
+            </div>
+            </div>
+
+            <footer>
+                Alerts: All systems normal
+            </footer>
+    </body>
+</html>
