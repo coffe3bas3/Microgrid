@@ -40,7 +40,7 @@ The purpose of this program/website is to create a graphical user interface dash
 
 ## 📑 Poster
 
-```To be added```
+![Group 2 Poster pptx](https://github.com/user-attachments/assets/662d51d3-58e7-4726-a463-31978539f3b3)
 
 ---
 
