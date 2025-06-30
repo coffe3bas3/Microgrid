@@ -2,40 +2,71 @@
 
 <html lang="en">
     <head>
-        <link rel = "stylesheet" href = https://icons8.com/icons/set/solar-panel>
-        <meta charset = "UTF-8" />
-        <meta name = "viewpoint" content = "width=device-width, initial-scale=1.0"/>
-        <script> src = "https://cdn.jsdelivr.net/npm/chart.js"</script>
-        <title> Weill Institute Microgrid</title>
+        <!-- Mobile Scaling -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Charts -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <title> Weill Microgrid Dashboard </title>
+        
+        <!-- Lato & Montserrat Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+        
         <style> 
+            /* CSS */
+
+            /* Lato Font for Headings */
+            .lato-regular {
+            font-family: "Lato", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            }
+            .lato-bold {
+            font-family: "Lato", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            }
+
+            /* Montserrat Font for Body */
+            .montserrat {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            }
+
             *{ 
                 box-sizing: border-box;
             }
             body {
                 margin: 0;
-                font-family: Arial, sams-serif;
+                font-family: 'Lato', sans-serif;
                 background-color: rgb(207, 219, 192);
                 color: #7a8f6f
             }
             header {
+                font-family: 'Lato', sans-serif;
                 background-color: rgb(146, 163, 141);
                 color: white;
                 padding: 1rem 2rem;
                 text-align: center;
             }
+
             .dashboard {
                 display: flex;
                 height: calc(100vh - 60px);
             }
-
-            .sidebar{
-                width: 300px;
+            .sidebar {
+                width: 500px;
                 background: rgb(207, 219, 192);
                 padding: 1rem;
                 box-sizing: border-box;
             }
 
-            .main-panel{
+            .main-panel {
                 flex-grow: 1;
                 padding: 1rem 2rem;
                 min-width: 0;
@@ -45,11 +76,16 @@
                 background-color: rgb(226, 241, 213);
                 padding: 1rem;
                 margin-bottom: 1rem;
-                border-radius: 8px;
+                border-radius: 25px;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+            .large-card {
+                height: auto; /* This is wrong. I have no idea how to make the card the same height as the right side-bar. */
+                width: 100%
             }
 
-            .status-diagram{
+            .status-diagram {
                 height: 200px;
                 background: #e3e8ec;
                 border: 1px dashed #aaa;
@@ -60,53 +96,142 @@
                 color: #666;
             }
 
-            footer{
-                background-color: #bdc3c7;
+            footer {
+                background-color: rgb(146, 163, 141);
                 text-align: center;
                 padding: 0.5rem;
             }
         </style>
     </head>
+
     <body>
-
         <header>
-            <h1>Weill Institute Microgrid</h1>
+            <h1 class="lato-bold" style="font-size: 50px; color: #eaeceb">WEILL INSTITUTE MICROGRID</h1>
         </header>
-        <div class = "dashboard" >
-            <div class = "main-panel">
-                <div class = "card">
-                    <h2>Solar PV Generation</h2>
-                    <canvas id = "Power used" width = "400" height = "200"></canvas>
-                        </div>
-                    </div>
+
+        <div class="dashboard" >
+            <div class="main-panel">
+
+                <!-- Solar PV Generation Graph -->
+                <div class = "card large-card">
+                    <h2 class="lato-bold">
+                        <img src="https://img.icons8.com/?size=100&id=21106&format=png&color=000000" width="30" height="30" style="vertical-align: middle; margin-right: 8px">
+                        SOLAR PV GENERATION
+                    </h2>
+
+                    <!-- Line Graph -->
+                    <canvas id="solarPVGenerationGraph"></canvas>
+
+                    <script>
+                        const ctx = document.getElementById('solarPVGenerationGraph').getContext('2d');
+
+                        const solarPVChart = new Chart(ctx, 
+                            {
+                                type: 'line',
+                                data: {
+                                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],  // X-axis labels (time, days, etc)
+                                    datasets: [
+                                    {
+                                        label: 'Panel 1',
+                                        data: [30, 45, 28, 60, 55, 70, 75],
+                                        borderColor: 'rgba(255, 99, 132, 1)',
+                                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                        fill: false,
+                                        tension: 0.1,
+                                    },
+                                    {
+                                        label: 'Panel 2',
+                                        data: [40, 35, 50, 55, 60, 65, 80],
+                                        borderColor: 'rgba(54, 162, 235, 1)',
+                                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                        fill: false,
+                                        tension: 0.1,
+                                    },
+                                    {
+                                        label: 'Panel 3',
+                                        data: [25, 40, 35, 50, 60, 55, 65],
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                        fill: false,
+                                        tension: 0.1,
+                                    }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            position: 'top',
+                                        },
+                                        title: {
+                                            display: true,
+                                        },
+                                    },
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            title: {
+                                            display: true,
+                                            text: 'Power (kW)'
+                                            }
+                                        },
+                                        x: {
+                                            title: {
+                                            display: true,
+                                            text: 'Month'
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        );
+                    </script>
                 </div>
             </div>
 
+            <!-- Information on the Right Side of the PV Generation Graph -->
+            <div class="sidebar">
 
-            <div class = "sidebar">
-                <div class = "card">
-                    <h2><i class = "https://icons8.com/icon/15359/partly-cloudy-day"></i> Weather </h2>
-                    <p style = "color: black">Temperature: --- </p>
-                    <p style = "color: black">Wind Direction: ---</p>
-                    <p style = "color: black">Irradance: ---</p>
-
-                </div>
-                <div class = "card">;
-                    <h2>Generation</h2>
-                    <p style = "color: black"> Solar Generation: ----</p>
-                    <p style = "color: black"> Energy Generation to Date: ----</p>
+                <!-- Weather -->
+                <div class="card">
+                    <h2 class="lato-bold" style="text-align: center">
+                        <img src="https://img.icons8.com/?size=100&id=l1IKLwu7b70d&format=png&color=000000" width="30" height="30" style="vertical-align: middle; margin-right: 8px">
+                        WEATHER
+                        <img src="https://img.icons8.com/?size=100&id=39336&format=png&color=000000" width="30" height="30" style="vertical-align: middle; margin-left: 8px">
+                    </h2>
+                    <p class="montserrat" style="color: #3e4a38">Temperature: ― </p>
+                    <p class="montserrat" style="color: #3e4a38">Wind Direction: ―</p>
+                    <p class="montserrat" style="color: #3e4a38">Irradance: ―</p>
                 </div>
 
-                <div class = "card">
-                    <h2>Energy Stored</h2>
-                    <p style = "color: black">Current Storage: --- </p>
-                    <p style = "color: black">Storage Over Time: --- </p>
+                <!-- Generation -->
+                <div class="card">
+                    <h2 class="lato-bold" style="text-align: center">
+                        <img src="https://img.icons8.com/?size=100&id=26258&format=png&color=000000" width="30" height="30" style="vertical-align: middle; margin-right: 8px">
+                        GENERATION
+                        <img src="https://img.icons8.com/?size=100&id=24095&format=png&color=000000" width="30" height="30" style="vertical-align: middle; margin-left: 8px">
+                    </h2>
+                    <p class="montserrat" style="color: #3e4a38"> Solar Generation: ―</p>
+                    <p class="montserrat" style="color: #3e4a38"> Energy Generation to Date: ―</p>
                 </div>
+
+                <!-- Energy Stored-->
+                <div class="card">
+                    <h2 class="lato-bold" style="text-align: center">
+                        <img src="https://img.icons8.com/?size=100&id=39434&format=png&color=000000" width="30" height="30" style="vertical-align: middle; margin-right: 8px">
+                        ENERGY STORED
+                        <img src="https://img.icons8.com/?size=100&id=21064&format=png&color=000000" width="30" height="30" style="vertical-align: middle; margin-left: 8px">
+                    </h2>
+                    <p class="montserrat" style="color: #3e4a38">Current Storage: ― </p>
+                    <p class="montserrat" style="color: #3e4a38">Storage Over Time: ―</p>       
+                </div>
+
             </div>
-            </div>
 
-            <footer>
-                Alerts: All systems normal
-            </footer>
+        </div>
+
+        <footer>
+            <p class="lato-bold" style="font-size: 50px; color: #eaeceb"></p>
+        </footer>
     </body>
 </html>
