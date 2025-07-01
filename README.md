@@ -50,3 +50,5 @@ The purpose of this program/website is to create a graphical user interface dash
 - Visualize the data on a dashboard by querying the database
 - Add interactive elements with React
 
+---
+> June 2025
