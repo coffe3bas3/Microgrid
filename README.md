@@ -10,7 +10,7 @@ To reduce adverse environmental impacts of fossil fuel burning for electricity p
 ---
 
 ## 🎯 Objective
-This is a research project under the California Renewable Energy Laboratory (CREL) Microgrid Dashboard Project in collaboration with the Kern College Community District (KCCD), University of California Riverside (UCR), and the Weill Institute.
+This is a research project under the California Renewable Energy Laboratory (CREL) Microgrid Dashboard Project in collaboration with the Kern Community College District (KCCD), University of California, Riverside (UCR), and the Weill Institute.
 
 There are three groups involved in this project:
 - [ ] Group 1: Microgrid – Data Acquisition and Management
